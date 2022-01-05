@@ -14,7 +14,7 @@ class ExampleApp(QtWidgets.QWidget, helloworld.Ui_Form):
         self.setupUi(self)
         self.pushButton.clicked.connect(self.button_clicked)
         self.Index = [5003, 5118, 106, 110, 111, 103, 5]
-        self.textEdit.setText("我叫李明，来自重庆交通大学，学号是6 3 1 8 0 7 0 3 0 1 2 1。")
+        self.textEdit.setText("我叫李明，来自重庆交通大学，学号是631807030121")
 
     def play_music(self):
         song = AudioSegment.from_mp3(self.filename)
@@ -25,7 +25,19 @@ class ExampleApp(QtWidgets.QWidget, helloworld.Ui_Form):
         print("当前发音人序号：", self.comboBox.currentIndex())
 
         print(self.textEdit.toPlainText())
-        result = self.client.synthesis(self.textEdit.toPlainText(), 'zh', '1',
+
+        # 处理文字
+        txt = self.textEdit.toPlainText()
+        new_txt = ""
+        for i in txt:
+            if '0' <= i <= '9':
+                new_txt = new_txt + i
+                new_txt = new_txt + ' '
+            else:
+                new_txt = new_txt + i
+        print(new_txt)
+
+        result = self.client.synthesis(new_txt, 'zh', '1',
                                        {"vol": 9,  # 音量 0-16  默认 5
                                         "spd": 4,  # 语速 0-9   默认 5
                                         "pit": 5,  # 音调 0-9   默认 5
