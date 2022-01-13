@@ -54,9 +54,9 @@ class ExampleApp(QtWidgets.QWidget, helloworld.Ui_Form):
 
 
 def main():
-    APP_ID = 'your id'
-    API_KEY = 'your key'
-    SECRET_KEY = 'your secret key '
+    APP_ID = '25426975'
+    API_KEY = 'besIFO02GHosUHIUdeeYAOLL'
+    SECRET_KEY = '4WL6EbLp821uC1oUNKQZLKWWOMot2zGt '
 
     client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
     outfile = "./audio/speak.mp3"
